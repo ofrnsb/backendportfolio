@@ -37,7 +37,7 @@ public class register {
       modelMapper.map(registerData, registerEntity.class)
     );
 
-    response.setMessage("success");
+    response.setMessage("Register Success");
     return ResponseEntity.ok(response);
   }
 }
