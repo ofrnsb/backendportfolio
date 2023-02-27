@@ -30,6 +30,8 @@ public class Security {
         requests
           .requestMatchers("/register")
           .permitAll()
+          .requestMatchers("/login")
+          .permitAll()
           .anyRequest()
           .authenticated()
       )
