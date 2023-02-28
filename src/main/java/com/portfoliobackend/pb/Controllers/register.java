@@ -1,10 +1,5 @@
 package com.portfoliobackend.pb.Controllers;
 
-import com.portfoliobackend.pb.DTO.registerData;
-import com.portfoliobackend.pb.DTO.responseData;
-import com.portfoliobackend.pb.Models.Entities.registerEntity;
-import com.portfoliobackend.pb.Services.registerService;
-import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +9,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.portfoliobackend.pb.DTO.registerData;
+import com.portfoliobackend.pb.DTO.responseData;
+import com.portfoliobackend.pb.Models.Entities.registerEntity;
+import com.portfoliobackend.pb.Services.registerService;
+
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/register")
@@ -33,9 +35,14 @@ public class register {
   ) {
     responseData<registerEntity> response = new responseData<>();
 
-    registerService.registerUser(
-      modelMapper.map(registerData, registerEntity.class)
-    );
+    try {
+      registerService.registerUser(
+        modelMapper.map(registerData, registerEntity.class)
+      );
+    } catch (RuntimeException e) {
+      response.setMessage(e.getMessage());
+      return ResponseEntity.status(401).body(response);
+    }
 
     response.setMessage("Register Success");
     return ResponseEntity.ok(response);

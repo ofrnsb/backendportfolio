@@ -2,9 +2,8 @@ package com.portfoliobackend.pb.Controllers;
 
 import com.portfoliobackend.pb.DTO.responseData;
 import com.portfoliobackend.pb.Models.Entities.registerEntity;
-import com.portfoliobackend.pb.Models.Repositories.loginRepo;
+import com.portfoliobackend.pb.Services.loginService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,25 +17,22 @@ import org.springframework.web.bind.annotation.RestController;
 public class login {
 
   @Autowired
-  private loginRepo loginRepo;
+  private loginService loginService;
 
   @PostMapping
   public ResponseEntity<responseData<String>> loginRequest(
     @RequestBody registerEntity user
   ) {
     responseData<String> response = new responseData<>();
-    registerEntity existingUser = loginRepo
-      .findByUsernameAndPassword(user.getUsername(), user.getPassword())
-      .orElse(null);
-    if (existingUser == null) {
-      response.setMessage("Username or Password is incorrect");
-      return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(response);
-    } else if (!existingUser.getPassword().equals(user.getPassword())) {
-      response.setMessage("Username or Password is incorrect");
-      return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(response);
-    } else {
-      response.setMessage("Login Success");
-      return ResponseEntity.ok(response);
+
+    try {
+      loginService.loginUser(user.getUsername(), user.getPassword());
+    } catch (RuntimeException e) {
+      response.setMessage(e.getMessage());
+      return ResponseEntity.status(401).body(response);
     }
+
+    response.setMessage("Login Success");
+    return ResponseEntity.ok(response);
   }
 }

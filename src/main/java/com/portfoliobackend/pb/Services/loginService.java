@@ -19,6 +19,10 @@ public class loginService implements UserDetailsService {
   private loginRepo loginRepo;
 
   public registerEntity loginUser(String username, String password) {
+    if (username.isBlank() || password.isBlank()) {
+      throw new RuntimeException("Username or password cannot be blank");
+    }
+
     Optional<registerEntity> userOptional = loginRepo.findByUsernameAndPassword(
       username,
       password
@@ -26,7 +30,7 @@ public class loginService implements UserDetailsService {
     if (userOptional.isPresent()) {
       return userOptional.get();
     } else {
-      throw new RuntimeException("Invalid username or password.");
+      throw new RuntimeException("Invalid username or password");
     }
   }
 
