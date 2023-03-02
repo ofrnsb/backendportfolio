@@ -7,6 +7,10 @@
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>3.0.3</version>
 		<relativePath/> <!-- lookup parent from repository -->
+         <configuration>
+        <source>19</source>  <!-- same as <java.version> -->
+        <target>19</target>    <!-- same as <java.version> -->
+    </configuration>
 	</parent>
 	<groupId>com.portfoliobackend</groupId>
 	<artifactId>pb</artifactId>
@@ -14,8 +18,9 @@
 	<name>pb</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
-		<java.version>19</java.version>
-	</properties>
+  <maven.compiler.source>19</maven.compiler.source>
+  <maven.compiler.target>19</maven.compiler.target>
+</properties>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
