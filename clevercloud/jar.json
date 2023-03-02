@@ -4,7 +4,7 @@
       "goal": "build"
     },
     "deploy": {
-      "jarName": "0.0.1-SNAPSHOT.jar"
+      "jarName": "pb-0.0.1-SNAPSHOT.jar"
     }
   }
   
