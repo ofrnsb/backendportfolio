@@ -1,0 +1,11 @@
+{
+    "name": "pb",
+    "build": {
+      "language": "java",
+      "gradle_task": "build"
+    },
+    "deploy": {
+      "web": "bin/app.jar"
+    }
+  }
+  
