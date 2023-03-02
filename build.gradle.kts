@@ -44,8 +44,3 @@ tasks.withType<JavaCompile>() {
 tasks.withType<Javadoc>() {
     options.encoding = "UTF-8"
 }
-tasks.withType<Jar> {
-    manifest {
-        attributes["Main-Class"] = "com.portfoliobackend.pb.PbApplication"
-    }
-}
