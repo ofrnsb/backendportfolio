@@ -4,7 +4,7 @@
       "goal": "build"
     },
     "deploy": {
-      "jarName": "pb-0.0.1-SNAPSHOT.jar"
+      "jarName": "/Users/b/2023/pp/pb/build/libs/pb-0.0.1-SNAPSHOT.jar"
     }
   }
   
