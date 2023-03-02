@@ -29,6 +29,8 @@ group = "com.portfoliobackend"
 version = "0.0.1-SNAPSHOT"
 description = "pb"
 java.sourceCompatibility = JavaVersion.VERSION_19
+java.targetCompatibility = JavaVersion.VERSION_19
+
 
 publishing {
     publications.create<MavenPublication>("maven") {
