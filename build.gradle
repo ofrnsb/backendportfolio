@@ -28,8 +28,7 @@ dependencies {
 group = 'com.portfoliobackend'
 version = '0.0.1-SNAPSHOT'
 description = 'pb'
- sourceCompatibility = 10
- targetCompatibility = 10
+java.sourceCompatibility = JavaVersion.VERSION_1_8
 
 publishing {
     publications {
