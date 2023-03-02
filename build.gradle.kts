@@ -46,6 +46,6 @@ tasks.withType<Javadoc>() {
 }
 tasks.withType<Jar> {
     manifest {
-        attributes["Main-Class"] = "com/portfoliobackend/pb"
+        attributes["Main-Class"] = "com/portfoliobackend/pb/PbApplication"
     }
 }
