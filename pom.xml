@@ -7,10 +7,7 @@
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>3.0.3</version>
 		<relativePath/> <!-- lookup parent from repository -->
-         <configuration>
-        <source>19</source>  <!-- same as <java.version> -->
-        <target>19</target>    <!-- same as <java.version> -->
-    </configuration>
+         
 	</parent>
 	<groupId>com.portfoliobackend</groupId>
 	<artifactId>pb</artifactId>
