@@ -1,11 +1,13 @@
 {
     "name": "pb",
     "build": {
+      "type": "gradle",
+      "goal": "build",
       "language": "java",
       "gradle_task": "build"
     },
     "deploy": {
-      "web": "bin/app.jar"
+      "jarName": "pb-0.0.1-SNAPSHOT.jar"
     }
   }
   
