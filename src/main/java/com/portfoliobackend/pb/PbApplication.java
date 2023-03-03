@@ -1,10 +1,8 @@
 package com.portfoliobackend.pb;
 
-import com.portfoliobackend.pb.Utils.CustomErrorAttributes;
 import org.modelmapper.ModelMapper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.web.servlet.error.DefaultErrorAttributes;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
@@ -18,11 +16,6 @@ public class PbApplication {
   @Bean
   public ModelMapper modelMapper() {
     return new ModelMapper();
-  }
-
-  @Bean
-  public DefaultErrorAttributes errorAttributes() {
-    return new CustomErrorAttributes();
   }
 
   @Bean
