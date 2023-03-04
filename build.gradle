@@ -5,7 +5,7 @@
 plugins {
     id 'java-library'
     id 'maven-publish'
-    id("org.springframework.boot") version "3.0.3"
+    id("org.springframework.boot") version "3.0.3" //menambahkan dependency spring boot pada gradle
 }
 
 repositories {
@@ -49,6 +49,7 @@ tasks.withType(Javadoc) {
     options.encoding = 'UTF-8'
 }
 
+// membuat .jar mempunyai main class
 jar {
     manifest {
         attributes(
