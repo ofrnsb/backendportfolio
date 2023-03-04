@@ -5,7 +5,7 @@
 plugins {
     id 'java-library'
     id 'maven-publish'
-    id("org.springframework.boot") version "3.0.3" //menambahkan dependency spring boot pada gradle
+    id("org.springframework.boot") version "3.0.4" //menambahkan dependency spring boot pada gradle
 }
 
 repositories {

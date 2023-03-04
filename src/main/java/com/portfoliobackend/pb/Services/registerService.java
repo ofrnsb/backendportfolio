@@ -14,6 +14,16 @@ public class registerService {
   public registerEntity registerUser(registerEntity user) {
     if (user.getUsername().isBlank() || user.getCompanyName().isBlank()) {
       throw new RuntimeException("Username or password cannot be blank");
+    } else if (user.getUsername().length() < 6) {
+      throw new RuntimeException("Username must be at least 6 characters");
+    } else if (user.getPassword().length() < 8) {
+      throw new RuntimeException("Password must be at least 8 characters");
+    } else if (
+      !user.getPassword().matches("^(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9]).+$")
+    ) {
+      throw new RuntimeException(
+        "Password must contain at least one uppercase letter, one special character, and one number"
+      );
     }
 
     boolean isExist = registerRepo
