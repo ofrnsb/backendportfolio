@@ -5,21 +5,19 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.0.3</version>
+		<version>3.0.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
-         
 	</parent>
-	<groupId>com.portfoliobackend</groupId>
-	<artifactId>pb</artifactId>
+	<groupId>com.backend</groupId>
+	<artifactId>portfolio</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>pb</name>
+	<name>portfolio</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
-  <maven.compiler.source>17</maven.compiler.source>
-  <maven.compiler.target>17</maven.compiler.target>
-
-
-</properties>
+		 <maven.compiler.source>17</maven.compiler.source>
+            <maven.compiler.target>17</maven.compiler.target>
+	</properties>
+    
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -71,7 +69,12 @@
 	</dependencies>
 
 	<build>
-		 <plugins>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
@@ -100,7 +103,7 @@
                     </execution>
                 </executions>
             </plugin>
-        </plugins>
+		</plugins>
 	</build>
 
 </project>
