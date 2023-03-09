@@ -18,14 +18,14 @@ public class Main {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  @Column(name = "user_id", nullable = false)
+  @Column(name = "amount", nullable = false)
   private Long Amount;
 
   @Column(name = "create_at", nullable = false, updatable = false)
   @CreationTimestamp
   private Date CreateAt;
 
-  @Column(name = "user_id", nullable = true)
+  @Column(name = "note", nullable = true)
   private String Note;
 
   @ManyToOne

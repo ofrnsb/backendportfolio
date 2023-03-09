@@ -1,10 +1,12 @@
 package com.portfoliobackend.pb.Models.Entities;
 
+import com.portfoliobackend.pb.Models.Entities.MoneyManagement.Main;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.util.Collection;
 import org.springframework.security.core.GrantedAuthority;
@@ -26,6 +28,9 @@ public class registerEntity implements UserDetails {
 
   @Column(name = "company_name", nullable = false)
   private String CompanyName;
+
+  @OneToMany
+  private Main main;
 
   public Long getId() {
     return id;
@@ -84,5 +89,13 @@ public class registerEntity implements UserDetails {
   @Override
   public boolean isEnabled() {
     return false;
+  }
+
+  public Main getMain() {
+    return main;
+  }
+
+  public void setMain(Main main) {
+    this.main = main;
   }
 }
