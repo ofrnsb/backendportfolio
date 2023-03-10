@@ -1,5 +1,6 @@
 package com.backend.portfolio.Models.Entities.MoneyManagement;
 
+import com.backend.portfolio.Models.Entities.registerEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -12,7 +13,7 @@ import org.hibernate.annotations.CreationTimestamp;
 
 @Entity
 @Table(name = "tbl_main")
-public class Main {
+public class MainEntity {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,24 +30,27 @@ public class Main {
   private String Note;
 
   @ManyToOne
-  private Kind kind;
+  private KindEntity kind;
 
   @ManyToOne
-  private Category category;
+  private registerEntity registerEntity;
 
-  public Category getCategory() {
+  @ManyToOne
+  private CategoryEntity category;
+
+  public CategoryEntity getCategory() {
     return category;
   }
 
-  public void setCategory(Category category) {
+  public void setCategory(CategoryEntity category) {
     this.category = category;
   }
 
-  public Kind getKind() {
+  public KindEntity getKind() {
     return kind;
   }
 
-  public void setKind(Kind kind) {
+  public void setKind(KindEntity kind) {
     this.kind = kind;
   }
 
