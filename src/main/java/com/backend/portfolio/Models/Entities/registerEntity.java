@@ -1,14 +1,18 @@
 package com.backend.portfolio.Models.Entities;
 
+import com.backend.portfolio.Models.Entities.MoneyManagement.MainEntity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -28,6 +32,10 @@ public class registerEntity implements UserDetails {
 
   @Column(name = "company_name", nullable = false)
   private String CompanyName;
+
+  @OneToMany(mappedBy = "registerEntity")
+  @JsonManagedReference //FOR THE OWNER SIDE
+  private List<MainEntity> mainEntity;
 
   public Long getId() {
     return id;
@@ -89,5 +97,13 @@ public class registerEntity implements UserDetails {
   @JsonIgnore
   public boolean isEnabled() {
     return true;
+  }
+
+  public List<MainEntity> getMainEntity() {
+    return mainEntity;
+  }
+
+  public void setMainEntity(List<MainEntity> mainEntity) {
+    this.mainEntity = mainEntity;
   }
 }

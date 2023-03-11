@@ -1,6 +1,7 @@
 package com.backend.portfolio.Models.Entities.MoneyManagement;
 
 import com.backend.portfolio.Models.Entities.registerEntity;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -33,7 +34,16 @@ public class MainEntity {
   private KindEntity kind;
 
   @ManyToOne
+  @JsonBackReference //FOR THE OWNED SIDE
   private registerEntity registerEntity;
+
+  public registerEntity getRegisterEntity() {
+    return registerEntity;
+  }
+
+  public void setRegisterEntity(registerEntity registerEntity) {
+    this.registerEntity = registerEntity;
+  }
 
   @ManyToOne
   private CategoryEntity category;

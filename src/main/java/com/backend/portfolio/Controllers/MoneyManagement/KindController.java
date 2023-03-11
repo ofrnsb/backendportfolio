@@ -3,10 +3,12 @@ package com.backend.portfolio.Controllers.MoneyManagement;
 import com.backend.portfolio.DTO.responseData;
 import com.backend.portfolio.Models.Entities.MoneyManagement.KindEntity;
 import com.backend.portfolio.Services.MoneyManagement.kindService;
+import java.util.List;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +25,11 @@ public class KindController {
   @Autowired
   private kindService kindService;
 
+  @GetMapping
+  public List<KindEntity> getAll() {
+    return kindService.findAll();
+  }
+
   @PostMapping
   public ResponseEntity<responseData<String>> createKind(
     @RequestBody KindEntity kindEntity
@@ -31,7 +38,7 @@ public class KindController {
 
     kindService.addKind(modelMapper.map(kindEntity, KindEntity.class));
 
-    response.setMessage("Login Success");
+    response.setMessage("Add Kind Success");
     return ResponseEntity.ok(response);
   }
 }

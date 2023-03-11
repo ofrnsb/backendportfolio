@@ -33,7 +33,7 @@ public class CategoryController {
       modelMapper.map(categoryEntity, CategoryEntity.class)
     );
 
-    response.setMessage("Login Success");
+    response.setMessage("Add Category Success");
     return ResponseEntity.ok(response);
   }
 }
