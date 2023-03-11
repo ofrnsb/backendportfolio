@@ -85,9 +85,11 @@
                         <descriptorRef>jar-with-dependencies</descriptorRef>
                     </descriptorRefs>
                     <!-- MainClass in mainfest make a executable jar -->
-                    <archive>
+                       <archive>
                         <manifest>
-                            <mainClass>App</mainClass>
+                            <addClasspath>true</addClasspath>
+                            <classpathPrefix>lib/</classpathPrefix>
+                            <mainClass>com.backend.portfolio.PortfolioApplication</mainClass>
                         </manifest>
                     </archive>
 

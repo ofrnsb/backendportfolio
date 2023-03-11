@@ -1,0 +1,10 @@
+{
+    "build": {
+      "type": "maven",
+      "goal": "build"
+    },
+    "deploy": {
+      "jarName": "./target/portfolio-0.0.1-SNAPSHOT.jar"
+    }
+  }
+  
