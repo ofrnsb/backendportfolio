@@ -28,7 +28,7 @@ public class Security {
       .disable()
       .authorizeHttpRequests(requests ->
         requests
-          .requestMatchers("/register")
+          .requestMatchers("/*")
           .permitAll()
           .requestMatchers("/login")
           .permitAll()
