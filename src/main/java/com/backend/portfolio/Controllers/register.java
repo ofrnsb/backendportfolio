@@ -5,11 +5,13 @@ import com.backend.portfolio.DTO.responseData;
 import com.backend.portfolio.Models.Entities.registerEntity;
 import com.backend.portfolio.Services.registerService;
 import jakarta.validation.Valid;
+import java.util.List;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,6 +27,11 @@ public class register {
 
   @Autowired
   private registerService registerService;
+
+  @GetMapping
+  public List<registerEntity> getAll() {
+    return registerService.findAll();
+  }
 
   @PostMapping
   public ResponseEntity<responseData<registerEntity>> login(

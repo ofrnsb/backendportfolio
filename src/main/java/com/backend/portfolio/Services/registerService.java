@@ -2,7 +2,9 @@ package com.backend.portfolio.Services;
 
 import com.backend.portfolio.Models.Entities.registerEntity;
 import com.backend.portfolio.Models.Repositories.registerRepo;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -10,6 +12,13 @@ public class registerService {
 
   @Autowired
   private registerRepo registerRepo;
+
+  @Autowired
+  private BCryptPasswordEncoder bCryptPasswordEncoder;
+
+  public List<registerEntity> findAll() {
+    return registerRepo.findAll();
+  }
 
   public registerEntity registerUser(registerEntity user) {
     if (user.getUsername().isBlank() || user.getCompanyName().isBlank()) {
@@ -37,7 +46,7 @@ public class registerService {
     } else {
       user.setCompanyName(user.getCompanyName());
       user.setUsername(user.getUsername());
-      user.setPassword(user.getPassword());
+      user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
       return registerRepo.save(user);
     }
   }
