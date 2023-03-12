@@ -16,11 +16,7 @@ public class mainService {
     return mainRepo.findAll();
   }
 
-  public MainEntity addAmount(MainEntity mainEntity) {
-    mainEntity.setAmount(mainEntity.getAmount());
-    mainEntity.setCreateAt(mainEntity.getCreateAt());
-    mainEntity.setNote(mainEntity.getNote());
-
+  public MainEntity saveData(MainEntity mainEntity) {
     return mainRepo.save(mainEntity);
   }
 }

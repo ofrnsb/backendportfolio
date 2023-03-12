@@ -31,14 +31,15 @@ public class MainController {
   }
 
   @PostMapping
-  public ResponseEntity<responseData<String>> createMain(
+  public ResponseEntity<responseData<MainEntity>> createMain(
     @RequestBody MainEntity mainEntity
   ) {
-    responseData<String> response = new responseData<>();
+    responseData<MainEntity> response = new responseData<>();
+    modelMapper.map(mainEntity, MainEntity.class);
 
-    mainService.addAmount(modelMapper.map(mainEntity, MainEntity.class));
+    mainService.saveData(mainEntity);
 
-    response.setMessage("Add Amount Success");
+    response.setMessage("Add Name Success");
     return ResponseEntity.ok(response);
   }
 }

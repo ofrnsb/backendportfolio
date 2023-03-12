@@ -2,15 +2,17 @@ package com.backend.portfolio.Models.Entities.MoneyManagement;
 
 import com.backend.portfolio.Models.Entities.registerEntity;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import java.sql.Date;
-import org.hibernate.annotations.CreationTimestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "tbl_main")
@@ -20,18 +22,8 @@ public class MainEntity {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  @Column(name = "amount", nullable = false)
-  private Long Amount;
-
-  @Column(name = "create_at", nullable = false, updatable = false)
-  @CreationTimestamp
-  private Date CreateAt;
-
-  @Column(name = "note", nullable = true)
-  private String Note;
-
-  @ManyToOne
-  private KindEntity kind;
+  @Column(name = "mainName", nullable = false)
+  private String mainName;
 
   @ManyToOne
   @JsonBackReference //FOR THE OWNED SIDE
@@ -45,23 +37,12 @@ public class MainEntity {
     this.registerEntity = registerEntity;
   }
 
-  @ManyToOne
-  private CategoryEntity category;
+  @OneToMany(mappedBy = "mainEntity")
+  @JsonManagedReference
+  private List<CategoryEntity> category;
 
-  public CategoryEntity getCategory() {
-    return category;
-  }
-
-  public void setCategory(CategoryEntity category) {
-    this.category = category;
-  }
-
-  public KindEntity getKind() {
-    return kind;
-  }
-
-  public void setKind(KindEntity kind) {
-    this.kind = kind;
+  public MainEntity() {
+    this.category = new ArrayList<>(); // inisialisasi list category pada konstruktor
   }
 
   public Long getId() {
@@ -72,27 +53,19 @@ public class MainEntity {
     this.id = id;
   }
 
-  public Long getAmount() {
-    return Amount;
+  public String getMainName() {
+    return mainName;
   }
 
-  public void setAmount(Long amount) {
-    Amount = amount;
+  public void setMainName(String mainName) {
+    this.mainName = mainName;
   }
 
-  public Date getCreateAt() {
-    return CreateAt;
+  public List<CategoryEntity> getCategory() {
+    return category;
   }
 
-  public void setCreateAt(Date createAt) {
-    CreateAt = createAt;
-  }
-
-  public String getNote() {
-    return Note;
-  }
-
-  public void setNote(String note) {
-    Note = note;
+  public void setCategory(List<CategoryEntity> category) {
+    this.category = category;
   }
 }
